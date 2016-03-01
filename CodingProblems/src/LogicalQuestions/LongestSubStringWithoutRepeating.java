@@ -42,6 +42,9 @@ public class LongestSubStringWithoutRepeating {
 	/* Efficient solution O(n), uses dynamic programming
 	 * needs extra buffer to store elements last occurance. */
 	public static String EfficientlongestSubstringWithoutRepetetion (String str) {
+		/* Stores the last occurance of the character,
+		 * solution currently implemented for ASCII, 
+		 * In case Unicode we can use hashMap. */ 
 		int[] last = new int[256];
 		for(int i = 0; i < 256; i++) {
 			last[i] = -1;

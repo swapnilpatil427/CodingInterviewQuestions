@@ -2,16 +2,20 @@ package LogicalQuestions;
 
 import java.util.HashSet;
 import java.util.Set;
-
+/* Given a string, find the length of the longest substring without repeating characters.
+ *  For example, the longest substring without repeating letters for "abcabcbb" is "abc",
+ *   which the length is 3. For "bbbbb" the longest substring is "b", 
+ *   with the length of 1. 
+ *   */
 public class LongestSubStringWithoutRepeating {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "swapnilbcpatil";
+		String str = "mysolution";
 		System.out.println(longestSubstringWithoutRepetetion(str));
 		System.out.println(EfficientlongestSubstringWithoutRepetetion(str));
 	}
-	
+	/* Non Efficient SOlution takes o(n2) */
 	public static String longestSubstringWithoutRepetetion (String str) {
 		StringBuilder sb = new StringBuilder(str);
 		String out = "" ;
@@ -35,6 +39,8 @@ public class LongestSubStringWithoutRepeating {
 		return out;
 	}
 	
+	/* Efficient solution O(n), uses dynamic programming
+	 * needs extra buffer to store elements last occurance. */
 	public static String EfficientlongestSubstringWithoutRepetetion (String str) {
 		int[] last = new int[256];
 		for(int i = 0; i < 256; i++) {

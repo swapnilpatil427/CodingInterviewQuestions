@@ -1,0 +1,52 @@
+package LogicalQuestions;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public class MyOwnMutexLocks {
+	/* Let X is the variable [0-100000]
+	 * We can either apply lock on X or 	Release a lock
+	 
+	 *  */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] events = { "ACQUIRE 364", "ACQUIRE 84", "RELEASE 84", "RELEASE 364"};
+		System.out.println(checkConditions(events));
+	}
+	
+	public static int checkConditions(String[] events) {
+		Stack<Integer> stack = new Stack<Integer>();
+		Map<Integer,Boolean> map = new HashMap<Integer,Boolean>();
+		int i = 0;
+		for(i = 0;i < events.length; i++) {
+			String[] event = events[i].split(" ");
+			String command = event[0];
+			int lockLoc = Integer.parseInt(event[1]);
+			if(command.equalsIgnoreCase("ACQUIRE")) {
+				map.put(lockLoc, true);
+				stack.add(lockLoc);
+			} else if (command.equalsIgnoreCase("RELEASE")) {
+				int temp = 0;
+				if(map.get(lockLoc) ==  true) {
+				  if(stack.peek() != lockLoc) {
+					  return (i+1);
+				  } else {
+					  stack.pop();
+				  }
+				} else {
+					return (i+1);
+				}
+			} else {
+				return -1;
+			}
+		}
+		
+		if(stack.isEmpty()) {
+			return 0;
+		} else {
+		    return i+1;
+		}
+	}
+
+}

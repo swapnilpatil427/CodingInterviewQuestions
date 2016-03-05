@@ -1,0 +1,17 @@
+package ArraysandStrings;
+
+public class FIndTheUncommonElementFromSecondArray {
+
+	public static void main(String[] args) {
+		Integer[] arr1 = {1,2,3,4,5};
+		Integer[] arr2 = {2,3,5,4};
+		int i = FIndTheUncommonElementFromSecondArray.<Integer>returnUncommon(arr1, arr2);
+	}
+	
+	public static <T> T returnUncommon(T[] arr1, T[] arr2) {
+		
+		return 0;
+		
+	}
+
+}

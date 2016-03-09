@@ -1,0 +1,72 @@
+package Sorting;
+
+import java.sql.Time;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+/* Sorting one array using ordering of other array'
+ * for example str1 = banana, str2= bns 
+ * output will be str1 one sorted using the str2 as foloows
+ * output = bnnaaa   
+ * 
+ * input str1 = swapnil , str2 = npl
+ * output = nplswai
+ * */
+public class Sort1arrayusing2 {
+	static Map<Character, Integer> map = new HashMap<Character, Integer>();
+	static Map<Integer, Character> map1 = new HashMap<Integer, Character>();
+	static int count;
+	public static void main(String[] args) {
+		/* String to be sorted */
+		String s1 = "swapnil";
+		/* Array to use for sorting sequence */
+		String s2 = "awn";
+		
+		/* puts elements in array2, or characters in hashmap */
+		for (int i = 0; i < s2.length(); i++) {
+			map.put(s2.charAt(i), i);
+			//map1.put(i, s2.charAt(i));
+		}
+		char[] c = s1.toCharArray();
+		System.out.println("Original String : " + s1);
+		System.out.println("Sorted String : " + sort1StringUsing2String(c,s2));
+	}
+
+	public static String sort1StringUsing2String(char[] s1,String s2) {
+		long t = System.currentTimeMillis();
+		StringBuilder s3 = new StringBuilder();
+		StringBuilder s6 = new StringBuilder();
+		int[] values = new int[map.size()];
+		char c;
+		int priority;
+		for (int i = 0; i < s1.length; i++) {
+			c = s1[i];
+			priority = priority(c);
+			if (priority < map.size()) {
+				if(map.containsKey(c)) {
+					map.replace(c, map.get(c)+1);
+				} else {
+					map.put(c, 1);
+				}
+				//values[priority]++;
+			} else {
+				s3.append(c);
+			}
+		}
+		
+		for (int i = 0; i < s2.length(); i++) {		
+				char value = map1.get(s2.charAt(i));
+				for (int j = 0; j < values[i]; j++) {
+					s6.append(value);
+				}
+		}
+		System.out.println("Time Taken by my algorithm : " + (System.currentTimeMillis() - t));
+		return s6.append(s3).toString();
+	}
+
+	static int priority(char c) {
+		return (map.containsKey(c)) ? map.get(c) : map.size();
+	}
+}

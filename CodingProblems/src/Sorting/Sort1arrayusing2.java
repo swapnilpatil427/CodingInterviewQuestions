@@ -16,54 +16,43 @@ import java.util.Map;
  * */
 public class Sort1arrayusing2 {
 	static Map<Character, Integer> map = new HashMap<Character, Integer>();
-	static Map<Integer, Character> map1 = new HashMap<Integer, Character>();
 	static int count;
+
 	public static void main(String[] args) {
 		/* String to be sorted */
-		String s1 = "iamswapnilandmysortingworksfasterthanquickmergesorts";
+		String s1 = "asdasdsafdhsfjshkfjhsdkjfcbsdjfhdshjkfksfhskfxdvsdhfskfhdfsjkds";
 		/* Array to use for sorting sequence */
-		String s2 = "abcdefghijklmnopqrstuvwxyz";
-		
+		String s2 = "awnswap";
+
 		/* puts elements in array2, or characters in hashmap */
 		for (int i = 0; i < s2.length(); i++) {
-			map.put(s2.charAt(i), i);
-			map1.put(i, s2.charAt(i));
+			map.put(s2.charAt(i), 0);
 		}
 		char[] c = s1.toCharArray();
 		System.out.println("Original String : " + s1);
-		System.out.println("Sorted String : " + sort1StringUsing2String(c));
+		System.out.println("Sorted String : " + sort1StringUsing2String(c, s2));
 	}
 
-	public static String sort1StringUsing2String(char[] s1) {
+	public static String sort1StringUsing2String(char[] s1, String s2) {
 		long t = System.currentTimeMillis();
 		StringBuilder s3 = new StringBuilder();
 		StringBuilder s6 = new StringBuilder();
-		int[] values = new int[map.size()];
-		char c;
-		int priority;
 		for (int i = 0; i < s1.length; i++) {
-			c = s1[i];
-			priority = priority(c);
-			if (priority < map.size()) {
-				values[priority]++;
+			if (map.containsKey(s1[i])) {
+				map.replace(s1[i], map.get(s1[i]) + 1);
 			} else {
-				s3.append(c);
+				s3.append(s1[i]);
 			}
 		}
-		
-		for (int i = 0; i < map.size(); i++) {
-			if (values[i] != '\u0000') {
-				char value = map1.get(i);
-				for (int j = 0; j < values[i]; j++) {
-					s6.append(value);
-				}
+
+		for (int i = 0; i < s2.length(); i++) {
+			char c = s2.charAt(i);
+			int value = map.get(c);
+			for (int j = 0; j < value; j++) {
+				s6.append(c);
 			}
 		}
 		System.out.println("Time Taken by my algorithm : " + (System.currentTimeMillis() - t));
 		return s6.append(s3).toString();
-	}
-
-	static int priority(char c) {
-		return (map.containsKey(c)) ? map.get(c) : map.size();
 	}
 }

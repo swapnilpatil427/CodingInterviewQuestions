@@ -1,0 +1,28 @@
+package ArraysandStrings;
+/*  Find Whether a Input string had Palindrome? 
+Example : 
+Input Samples : "1234xyzyx5678" , "abcdefeabc" 
+Output : A Bool Value, True if Contains a Palindrome , False otherwise.
+(In this Example input string conatins "xyzyx" and efe" Palindrome respectively)
+
+*/
+public class StringHasPalindrome {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str = "12345623443";
+		System.out.println(HasPalindrome(str));
+	}
+
+	static boolean HasPalindrome(String str) {
+		for (int i = 1; i < str.length()-1; i++) {
+			if (str.charAt(i) == str.charAt(i + 1) && str.charAt(i - 1) == str.charAt(i + 2))
+				return true;
+			if (str.charAt(i - 1) == str.charAt(i + 1))
+				return true;
+
+		}
+		return false;
+
+	}
+}

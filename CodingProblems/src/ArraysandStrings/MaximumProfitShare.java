@@ -1,0 +1,45 @@
+package ArraysandStrings;
+
+/* Find when best day to and sell the shares , so that profit is maximum.
+ * We can only sell the the share after purchasing it.
+ * for example 
+ * 5 
+ * 10 
+ * 3 
+ * 7
+ * Best time to buy the share here is at 1 day, which is index of 5 and best time to sell is 2nd day, which 
+ * index of 10.
+ * 
+ * Though 3 is the lowest price that we you get, but after purchasing a share at 3, we cannot sell it with the 
+ * profit margin greater than 4.
+ *  */
+
+public class MaximumProfitShare {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr = { 10, 20, 30, 40, 20, 50, 5, 10, 15, 25, 30, 4, 60, 70 };
+		int max = 0;
+		int min = 0;
+		int tempMin = 0;
+		int tempMax = 0;
+		for (int i = 1; i < arr.length; i++) {
+			if (arr[i] > arr[tempMax]) {
+				tempMax = i;
+			}
+
+			if (arr[i] < arr[tempMin]) {
+				tempMin = i;
+				tempMax = i;
+			}
+
+			if ((arr[tempMax] - arr[tempMin]) > (arr[max] - arr[min])) {
+				max = tempMax;
+				min = tempMin;
+			}
+		}
+		System.out.println("Best day to purchase is: " + (tempMin+1));
+		System.out.println("Best day to Sell is: " + (tempMax+1));
+	}
+
+}

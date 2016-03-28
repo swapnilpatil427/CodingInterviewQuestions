@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ArraysandStrings.IntuitChallenge&apos; to &apos;MaximumProfitShare&apos;&#x0A;- Original project: &apos;CodingProblems&apos;&#x0A;- Original element: &apos;ArraysandStrings.IntuitChallenge&apos;&#x0A;- Renamed element: &apos;ArraysandStrings.MaximumProfitShare&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;IntuitChallenge&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ArraysandStrings{IntuitChallenge.java[IntuitChallenge" matchStrategy="1" name="MaximumProfitShare" qualified="false" references="true" similarDeclarations="false" stamp="1457651568496" textual="false" version="1.0"/>
+</session>
